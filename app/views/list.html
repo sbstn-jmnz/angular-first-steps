@@ -1,0 +1,22 @@
+<input type="text" ng-model="Todos.new" />
+<button ng-click="Todos.addTodo()">Agregar</button>
+<ul>
+  <li ng-repeat="todo in Todos.data">
+    <!-- Cuando el elemento no se encuentra seleccionado -->
+    <div ng-hide"Todos.selected === todo.id">
+      <input type="checkbox" ng-click="Todos.doneTodo(todo.id)" ng-model="todo.done">
+        <span ng-click="Todos.selectTodo(todo.id)"
+              ng-style="{'text-decoration': todo.done ? 'line-through' : 'none'}">
+          {{ todo.desc }}
+        </span>
+      <button ng-click="Todos.deleteTodo(todo.id)">Eliminar</button>
+    </div>
+
+    <div ng-show="Todos.selected === todo.id">
+      <input type="text" ng-model="Todos.temporal" />
+      <button ng-click="Todos.updateTodo()">Actualizar</button>
+    </div>
+  </li>
+</ul>
+<div ng-show="mostrar">Este elemento puede toglear</div>
+<button ng-click="alternarDiv()">{{ (mostrar)? 'Ocultar':'Mostrar'}}</button>
